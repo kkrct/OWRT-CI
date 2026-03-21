@@ -192,16 +192,16 @@ jobs:
 
           make -j$(nproc) || make -j1 V=s
 
-      - name: Delete Old Cache
-        run: |
+#      - name: Delete Old Cache
+#        run: |
           # 获取缓存列表并删除
-          gh cache list --key ${{ env.WRT_ARCH }}-${{ hashFiles('**/repo_flag') }}- --json key --jq '.[] | .key' | while read -r key; do
-            gh cache delete "$key"
-          done
+#          gh cache list --key ${{ env.WRT_ARCH }}-${{ hashFiles('**/repo_flag') }}- --json key --jq '.[] | .key' | while read -r key; do
+#            gh cache delete "$key"
+#          done
           # 输出缓存状态
-          echo "========cache status========"
-          echo "ccache: $(du -sh ./wrt/.ccache | cut -f 1)"
-          echo "staging: $(du -sh ./wrt/staging_dir | cut -f 1)"
+#          echo "========cache status========"
+#          echo "ccache: $(du -sh ./wrt/.ccache | cut -f 1)"
+#          echo "staging: $(du -sh ./wrt/staging_dir | cut -f 1)"
 
       - name: Machine Information
         run: |
